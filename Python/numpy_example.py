@@ -71,3 +71,47 @@ np.random.randint(0, 10, 5) #Generates an array of 5 random integers between 0 a
 print("My random integer array is \n", np.random.randint(0, 10, 5))
 # The np.random.randint function generates random integers between a specified low (inclusive) and high (exclusive) value. The first argument is the low value, the second argument is the high value, and the third argument is the number of random integers to generate. In this case, it generates 5 random integers between 0 (inclusive) and 10 (exclusive), which means the possible values are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. The resulting array will contain 5 random integer values drawn from this range.
 
+np.random.seed(42) #Sets the seed for the random number generator. This ensures that the same sequence of random numbers is generated each time the code is run. The argument passed to the function is an integer that serves as the seed value. By setting the seed, you can reproduce the same random numbers in future runs of the code, which is useful for debugging and testing purposes.
+print("My random array with seed 42 is \n", np.random.rand(5)) #This will generate the same array of 5 random numbers between 0 and 1 every time you run the code, because the seed has been set to 42. The numbers are drawn from a uniform distribution over [0, 1). The resulting array will contain the same 5 random values each time you run the code, allowing for reproducibility in your results.
+
+#Another example
+np.random.seed(101)
+print("My random array with seed 101 is \n", np.random.rand(5)) #This will generate the same array of 5 random numbers between 0 and 1 every time you run the code, because the seed has been set to 101. The numbers are drawn from a uniform distribution over [0, 1). The resulting array will contain the same 5 random values each time you run the code, allowing for reproducibility in your results.
+
+# seed becomes useful when you want to generate random numbers for testing or debugging purposes. By setting a specific seed value, you can ensure that the same sequence of random numbers is generated each time you run the code. This allows you to reproduce the same results and identify any issues or inconsistencies in your code. For example, if you are testing a function that relies on random numbers, setting a seed will help you verify that the function behaves as expected with the same input data.
+
+arr = np.arange(0,30,2) #This will generate an array of numbers starting from 0 up to (but not including) 30, with a step size of 2. The resulting array will contain the values [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28].
+arr.reshape(5, 3) #This will reshape the array into a 2D array with 5 rows and as many columns as needed to accommodate all the elements. The -1 in the reshape function tells NumPy to automatically calculate the number of columns based on the total number of elements in the array and the specified number of rows. In this case, since there are 15 elements in the original array and we want 5 rows, NumPy will determine that we need 3 columns to fit all the elements. The resulting array will have the shape (5, 3) and will contain the values:
+
+print("My reshaped array is \n", arr.reshape(5, 3))
+# reshape can throw an error if the total number of elements in the original array does not match the total number of elements in the reshaped array. For example, if you try to reshape an array of 10 elements into a shape that requires 12 elements, you will get an error. It is important to ensure that the total number of elements remains the same when reshaping an array. 5 * 3 = 15, which matches the total number of elements in the original array (0 to 28 with a step of 2 gives us 15 elements). If we tried to reshape it into a shape that does not accommodate all 15 elements, we would get an error.
+
+ranarr = np.random.randint(0,101,10)
+print("My random integer array between 0 and 100 is \n", ranarr)
+ranarr.max() #This will return the maximum value in the array ranarr. The max function scans through all the elements in the array and identifies the largest value. The resulting output will be the maximum integer value present in the ranarr array, which contains 10 random integers between 0 and 100 (inclusive).
+print("The maximum value in ranarr is \n", ranarr.max())
+
+ranarr.min() #This will return the minimum value in the array ranarr. The min function scans through all the elements in the array and identifies the smallest value. The resulting output will be the minimum integer value present in the ranarr array, which contains 10 random integers between 0 and 100 (inclusive).
+print("The minimum value in ranarr is \n", ranarr.min())
+
+ranarr.argmax() #This will return the index of the maximum value in the array ranarr. The argmax function scans through all the elements in the array and identifies the index of the largest value. The resulting output will be the index position of the maximum integer value present in the ranarr array, which contains 10 random integers between 0 and 100 (inclusive). Note that if there are multiple occurrences of the maximum value, argmax will return the index of the first occurrence. Index starts from 0, so if the maximum value is at the first position in the array, argmax will return 0.
+print("The index of the maximum value in ranarr is \n", ranarr.argmax())
+
+ranarr.argmin() #This will return the index of the minimum value in the array ranarr. The argmin function scans through all the elements in the array and identifies the index of the smallest value. The resulting output will be the index position of the minimum integer value present in the ranarr array, which contains 10 random integers between 0 and 100 (inclusive). Note that if there are multiple occurrences of the minimum value, argmin will return the index of the first occurrence. Index starts from 0, so if the minimum value is at the first position in the array, argmin will return 0.
+print("The index of the minimum value in ranarr is \n", ranarr.argmin())
+
+arr.shape #This will return the shape of the array arr. The shape attribute provides a tuple that represents the dimensions of the array. In this case, since arr was reshaped to have 5 rows and 3 columns, the resulting output will be (5, 3), indicating that the array has 5 rows and 3 columns. The shape of an array is important for understanding its structure and how it can be manipulated in various operations.
+print("The shape of arr is \n", arr.shape)
+
+#Note that arr.shape is an attribute call not a function call, so we do not use parentheses when accessing it. If we were to use parentheses like arr.shape(), it would result in an error because shape is not a function but an attribute of the array object. Always remember to access attributes without parentheses and functions with parentheses in Python. 
+
+# How to remember which one is attribute vs which one is Method?
+# In general, attributes are properties of an object that provide information about the object, while methods are functions that perform actions on the object.
+# For example, in the case of a NumPy array, shape is an attribute because it provides information about the dimensions of the array, while reshape is a method because it performs an action that changes the structure of the array.
+
+arr.reshape(15,) #This will reshape the array arr into a 1D array with 15 elements. The resulting array will contain the same values as the original array but will be flattened into a single dimension. The output will be an array with the shape (15,) and will contain the values [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]. This is useful when you want to convert a multi-dimensional array into a flat array for certain operations or analyses.
+print("My reshaped array into 1D is \n", arr.reshape(15,))
+
+# Or I can reshape arr into 
+arr.reshape(1,15) #This will reshape the array arr into a 2D array with 1 row and 15 columns. The resulting array will contain the same values as the original array but will be structured as a single row with 15 columns. The output will be an array with the shape (1, 15) and will contain the values [[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]. This is useful when you want to convert a multi-dimensional array into a specific shape for certain operations or analyses.
+print("My reshaped array into 2D with 1 row and 15 columns is \n", arr.reshape(1,15))
