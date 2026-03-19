@@ -17,3 +17,20 @@ df_orders['Price'] > 50 #Pandas broadcase this number 50 to every single instanc
 print(df_orders[df_orders['Price'] > 50]) #Here we pass it back to the dataframe so that we get the filtered dataframe output.
 
 #Let's look at filtering with multiple conditions. 
+# we make use of AND condition via the symbol & and the other one is OR operator with the symbol |
+
+print(df_orders[(df_orders['Price'] > 30) & (df_orders['Quantity'] > 2)])
+# Don't write "and" keyword instead of & because and is for Python. if you write "and" it throws an ambiguous error. 
+
+#Let's write a code for using OR operator. 
+print(df_orders[(df_orders['Country'] == 'India') | (df_orders['Country'] == 'USA') | (df_orders['Country'] == 'Canada')])
+
+#Above code can be also written using isin method of dataframe. Basically we can wrap it all inside a list and then pass it across. 
+listA = ['India','USA','Canada']
+print(df_orders[df_orders['Country'].isin(listA)])
+
+
+print("\n")
+
+#Alternatively
+print(df_orders[df_orders['Country'].isin(['India','USA','Canada'])])
