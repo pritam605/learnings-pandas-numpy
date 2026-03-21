@@ -23,3 +23,27 @@ lambda num: num * 2
 df_orders['New_Price'] = df_orders['Price'].apply(lambda num: num*2) #Lambda take in a Price value and multiple it by 2 . the variable for lambda can be anything. 
 
 df_orders.head(5)
+#using multiple columns for apply method
+
+def multi_col_method(Price, Quantity):
+    fnl_amt = Price * Quantity
+    return fnl_amt
+
+# print(df_orders[['Price','Quantity']].apply(multi_col_method)) -- this fails because multi column method calling is not applicable like this. 
+
+print(df_orders[['Price','Quantity']].apply(lambda df_orders: multi_col_method(df_orders['Price'],df_orders['Quantity']), axis = 1))  #axis = 1 tells that these are columns and not index.
+
+df_orders['new_col'] = df_orders[['Price','Quantity']].apply(lambda df_orders: multi_col_method(df_orders['Price'],df_orders['Quantity']), axis = 1)
+
+print(df_orders.head(10))
+
+#we can scale all this to use more columns. 
+#to make this all factor we can use np.vectorize
+
+import numpy as np
+df_orders['new_col1'] = np.vectorize(multi_col_method)(df_orders['Price'],df_orders['Quantity'])
+
+print(df_orders)
+# The job of np.vectorize function is to transform functions that are not numpy aware. The regular Python function, code is not aware that we would be using the function on a numpy dataframe.
+
+#Hence it is always good to use np.vectorize method. 
