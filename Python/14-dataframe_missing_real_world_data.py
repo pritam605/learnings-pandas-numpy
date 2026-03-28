@@ -31,4 +31,6 @@ print(myvar is np.nan)
 # Let's read a file with empty values. 
 import pandas as pd
 #pd.read_csv
-# We will then deal with the missing values. 
+# We will then deal with the missing values.
+# 
+# Code starts from below. 
