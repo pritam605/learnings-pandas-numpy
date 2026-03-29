@@ -54,12 +54,30 @@ print(df_orders[df_orders['Category'].isnull() & df_orders['Country'].isnull()])
 
 #Handling missing data via Threshold
 # thres = xx where xx means the row should have atleast that many non null values
-df_orders(thres=5) # Meaning drop rows where the orders dataframe doe snot contain atleast 5 non null values. Note that this is doing row wise filtering. 
+df_orders.dropna(thresh=5) # Meaning drop rows where the orders dataframe doe snot contain atleast 5 non null values. Note that this is doing row wise filtering. 
 
 df_orders.dropna(axis=1) #axis 1 means columns so what this tells is every column that has a missing value drop them.
 
 df_orders.dropna(axis=0) #axis 0 means rows so what this tells is every rows that has a missing value drop them.
 
-df_orders.dropna(subset = ['last_name']) #Only considers certain column to look for missing values in those columns only. 
+df_orders.dropna(subset = ['Country']) #Only considers certain column to look for missing values in those columns only. 
 
-df_orders.dropna(thres = 4, subset = ['last_name']) # This way we can keep a combination of threshold function along with subset functions. So, any row where number of non-null vavlues are more than 4, it is going to drop it off only if last_name is null for that row. 
+df_orders.dropna(thresh = 4, subset = ['Country']) # This way we can keep a combination of threshold function along with subset functions. So, any row where number of non-null vavlues are more than 4, it is going to drop it off only if last_name is null for that row. 
+
+df_orders.fillna('New Value!')  # we can provide this value and its automatically fills in to every single missing value instance in the data. 
+
+df_orders['Country'] = df_orders['Country'].fillna('New_Country') #This will fill uo the column country with the string that we have provided in the argument. 
+
+
+# df_orders.fillna(df_orders.mean()) #a brute force way of imputing nulls with mean value. In order to make this work, all the values should be in numeric format. 
+
+#Linear interpolation of filling the missing values. 
+airline_txn = {"First Class": 100, "Business Class": np.nan, "Economy" : 280}
+df = pd.Series(airline_txn)
+print(df)
+
+# Here we see there is a logical progression in terms of how the column values are written. in cases like this we use the method called as "Interpolate". We automatically fill the empty value based the value above and below and takes the average of both and then that very partiular missing value is filled.. 
+
+# we don't use it too much though.
+
+print(df.interpolate())
