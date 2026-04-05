@@ -13,3 +13,5 @@ print('/n')
 print(df_orders.groupby(['Country','Product']).value_counts()) #Returns a multi level Index. 
 
 df_orders.groupby(['Country','Product']).value_counts()
+
+#Contunuing the exercise below. 
