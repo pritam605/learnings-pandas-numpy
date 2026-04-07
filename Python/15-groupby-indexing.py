@@ -15,3 +15,4 @@ print(df_orders.groupby(['Country','Product']).value_counts()) #Returns a multi 
 df_orders.groupby(['Country','Product']).value_counts()
 
 #Contunuing the exercise below. 
+# Further examples below. 
