@@ -18,3 +18,4 @@ df_orders.groupby(['Country','Product']).value_counts()
 # Further examples below. 
 df_orders.head(5)
 df_orders.tail(5)
+#for testing purposes
