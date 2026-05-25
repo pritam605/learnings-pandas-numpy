@@ -20,3 +20,4 @@ df_orders.head(5)
 df_orders.tail(5)
 #for testing purposes
 # to be continued
+#proceeding with further functions. 
